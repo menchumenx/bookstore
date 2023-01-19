@@ -1,0 +1,29 @@
+
+
+.footer{
+    width: 100vw;
+    height: 8vh;
+    
+    background-color: var(--p_color_blue);
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+    .links_container{
+        width: 30%;
+        /* border: 2px solid red; */
+
+       display: flex;
+       flex-direction: row;
+       justify-content: space-around;
+
+       padding: 1%;
+    }
+      
+        .links_container a{
+            color: var(--link_color_white);
+            text-decoration: none;
+            font-family: var(--link_font);
+        }

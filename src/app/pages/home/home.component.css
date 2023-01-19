@@ -1,0 +1,32 @@
+
+
+.main{
+    width:100vw;
+    height: var(--main_container);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+    .text{
+        margin-top: 8vh;
+        width: 40%;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+  
+    }
+        p{
+            font-family: var(--link_font);
+            font-style: italic;
+            font-weight: bold;
+        }
+        .text_container{
+            width: 100%;
+            display: flex;
+            justify-content: flex-end;
+        }
