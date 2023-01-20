@@ -15,8 +15,12 @@
 :root{
     --link_font: 'Poppins', sans-serif;
     --link_color_white: #dfe1e2;
+    --placeholder_color:#1e3677d7;
+    --inputs_boder_color:#1e3677d7;
 
     --p_color_blue: #162655;
+    --s_color_lightBlue: #5678df;
+
 
     --main_container: 84vh
 }

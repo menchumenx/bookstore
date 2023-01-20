@@ -1,0 +1,73 @@
+
+<main class="main">
+
+   <div class="profile_container">
+
+    <div class="profile_data">
+
+        <div class="img_container">
+            <img src="{{user.photo}}" alt="">
+        </div>
+
+        <div class="name_container">
+            <h3 class="name">{{user.name}} {{user.last_name}}</h3>
+        </div>
+
+        <div action="" class="formContainer">
+
+            <div class="formContainer--data">
+                <label for="">Nombre</label>
+                <input type="text" [value]="user.name"> 
+            </div>
+            <div class="formContainer--data">
+                <label for="">Apellido</label>
+                <input type="text" value="{{user.last_name}}">
+            </div>
+            <div class="formContainer--data">
+                <label for="">Email</label>
+                <input type="text" value="{{user.email}}">
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- /* ******************************************** */
+    /* contenedor MODIFICADOR DATOS */ -->
+    <div class="modifData_container">
+
+        <div class="title_container">
+            <h3 class="title"><span>EDITAR</span> DATOS</h3>
+        </div>
+    
+
+        <form action="" class="formmdfdata_Container">
+            <div class="formContainer--mdfdata">
+                <label  for="">Nombre</label>
+                <input #name class="formContainer_input"  placeholder="Introduce el nuevo nombre" type="text">
+            </div>
+            <div class="formContainer--mdfdata">
+                <label for="">Apellido</label>
+                <input #last_name placeholder="Introduce el nuevo apellido" type="text">
+            </div>
+            <div class="formContainer--mdfdata">
+                <label for="">Email</label>
+                <input #email placeholder="Introduce el nuevo email" type="text">
+            </div>
+            <div class="formContainer--mdfdata">
+                <label for="">Foto</label>
+                <input #photo placeholder="Introduce uan url para cambiar tu foto de perfil" type="text">
+            </div>
+
+        </form>
+
+        <div class="endForm">
+            <button (click)="modify_data(name.value,last_name.value, email.value, photo.value)" type="button" >Modificar</button>
+        </div>
+
+     </div>
+
+
+   </div>
+
+</main>
