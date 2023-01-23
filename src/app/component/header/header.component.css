@@ -9,17 +9,20 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    border: 2px solid blueviolet;
 }
     .brand{
         display: flex;
         flex-direction: row;
         justify-content: flex-start;
+        align-items: center;
         gap: 10px;
 
         margin-left: 1%;
+        height:100%;
     }
         .brand img{
-            width: 6%;
+            width: 6.2%;
         }
         .brand_title{
             font-weight: 400;
@@ -27,7 +30,6 @@
 
             color: var(--link_color_white);
             font-family: var(--link_font);
-    
         }
         .brand_span{
             color: var(--s_color_lightBlue);

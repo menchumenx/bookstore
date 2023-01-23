@@ -1,0 +1,83 @@
+
+<!-- D3.3 Esta card debe estar en un contenedor que permita agregar tantas card como se necesite sin
+romper el diseño. -->
+ <!-- D3.4 
+    • Añadir a la página libros un formulario con todos los campos necesarios para crear un libro.
+    • Implementar funcionalidad que cuando se inserten datos en el formulario y se llame al evento
+      click se agregue un nuevo libro al array libros del componente. -->
+
+
+<div class="container mt-5" >
+<!-- inIf para mostrar solo si ahy libros-->
+    <div *ngIf="myBooks.length !=0; else noBooks"  class="cards_container">
+     <!-- usamos el indice del ngFOr con la propiedad even(par) para cambair el color de los botones pares-->
+       
+     <!-- FOR que recorre el array de libros para mostrarlos + + [[ngClass]=""] para cambair los botones -->
+        <div *ngFor="let book of myBooks; let botonPar = even">
+            <!-- card -->
+            <div class="card" style="width: 18rem; max-height: 560px;">
+                <img src="{{book.photo}}" class="card-img-top" style="width: 100%; max-height: 350px;" alt="...">
+                
+                <div class="card-body">
+                    <div class="title_container;" style="height: 50px; ">
+                        <h5 class="card-title" style="color: #2170b0ea; ">{{book.title}}</h5>
+                    </div>
+                    <p class="card-text" style="text-align:right" >{{book.author}}</p>
+                    <p class="card-text"style="color: #acabab; text-align:right; color: #2170b0ea;" >{{book.price}} €</p>
+                    
+                    <div class=" card__end">
+                        <p class="card-text "style="color: #acabab;" >{{book.id_books | bookReference}}</p>
+                        <!-- cambiamos el boton de color segun la condicion de si es par usando el indice del ngFor
+                        Utilizamosl avriable declara den ngIF y las clases declardas en Css para hacer la condición -->
+                        <button class="buttonBlack" [ngClass]=" botonPar ? 'buttonBlack' : 'buttonBlue' " >Buy</button>           
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    
+    <!-- SI O HAY LIBROS: siempre  fuera del IF -->
+    <ng-template #noBooks class="noBooks">No hay libros disponibles</ng-template>
+
+</div>
+
+
+<!-- 
+    ***********FORMULARIO**************
+ -->
+ <div class=" container mt-5 formContainer">
+    <div class="form">
+        <form action="" class="formContainerData">
+            <div class="data">
+                <label for="">Id del Libro</label>
+                <input #id type="number" placeholder="Introduce el ID del libro" type="text">
+            </div>
+            <div class="data">
+                <label for="">Titulo del Libro</label>
+                <input #titulo  placeholder="Introduce el titulo del libro" type="text">
+            </div>
+            <div class="data">
+                <label for="">Tipo</label>
+                <input #tipo   placeholder="Introduce el tipo" type="text">
+            </div>
+            <div class="data">
+                <label for="">Autor</label>
+                <input #autor   placeholder="Introduce el Autor" type="text">
+            </div>
+            <div class="data">
+                <label for="">Precio</label>
+                <input #precio   placeholder="Introduce el precio de venta" type="number">
+            </div>
+    
+            <div class="data">
+                <label for="">Portada</label>
+                <input #foto  placeholder="Introduce una url para la portada" type="text">
+            </div>
+    
+        </form>
+    
+        <div class="endForm">
+            <button  type="button" (click)="updateBook( titulo.value, tipo.value, autor.value, precio.value, foto.value, id.value)">Insertar Libro</button>
+        </div>
+ </div>

@@ -10,6 +10,8 @@ import { ResgisterComponent } from './pages/resgister/resgister.component';
 import { HomeComponent } from './pages/home/home.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { FormsModule } from '@angular/forms';
+import { BooksComponent } from './pages/books/books.component';
+import { BookReferencePipe } from './pipes/book-reference.pipe';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,9 @@ import { FormsModule } from '@angular/forms';
     FormRegisterComponent,
     ResgisterComponent,
     HomeComponent,
-    ProfileComponent
+    ProfileComponent,
+    BooksComponent,
+    BookReferencePipe
   ],
   imports: [
     BrowserModule,

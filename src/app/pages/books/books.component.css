@@ -1,0 +1,122 @@
+
+
+/* CARDS CONTAINER */
+.cards_container{
+    width: 100%;
+    
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 40px;
+    margin-bottom: 100px;
+}
+
+/* CARDS */
+
+    .text__color{
+        color: var(--s_color_lightBlue);
+        
+    }
+    .card__end{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+        .buttonBlack{
+            width: 50%;
+            background-color: black;
+            border: none;
+            border-radius: 4px;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .buttonBlue{
+            width: 50%;
+            background-color:var(--p_color_blue);
+            border: none;
+            border-radius: 4px;
+            color: white;
+            padding: 10px;
+        }
+
+/* FORMULARIO ----------------------------- */
+.formContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10%;
+   
+}
+.form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    width: 50%;
+
+    box-shadow: 0 4px 8px 0  var(--p_color_blue), 0 6px 20px 0  rgba(32, 112, 177, 0.263);
+
+    padding: 2%;
+}
+
+.formContainerData{
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items:flex-start;
+    width: 80%;
+}
+    .data{
+        display:flex ;
+        flex-direction: column;
+        width: 100%;
+        margin-bottom: 2%;
+    }
+        .data input{
+            width: 100%;
+            min-height: 30px;
+            border: 1px solid var(--p_color_blue);
+            border-radius: 4px;
+            padding-left: 2%;
+            
+        }
+        .data input:hover{
+            border: solid 1px var(--s_color_lightBlue);
+        }
+        .data input::placeholder{
+            padding-left: 2%;
+            font-size: small;
+            font-family: var(--link_font)
+        }
+        .data label {
+            margin-bottom: 0.5%;
+            color: var(--p_color_blue);  
+            font-family: var(link_font);
+            font-weight: 600;
+        
+        }
+
+.endForm{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 80%;
+    
+}
+.endForm button{
+    margin-top: 30px;
+    width: 100%;
+    padding: 10px;
+    border-radius: 4px;
+    border: none;
+    background-color: var(--p_color_blue);
+    color: var(--link_color_white);
+}
+.endForm button:hover{
+    background-color: var(--s_color_lightBlue);
+
+}
