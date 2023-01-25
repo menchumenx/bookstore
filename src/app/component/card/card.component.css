@@ -1,0 +1,50 @@
+
+
+/* CARDS */
+.card{
+    position: relative;
+}
+.text__color{
+    color: var(--s_color_lightBlue);
+    
+}
+.delete_Button{
+    position:absolute;
+    right: 0;
+    padding: 2%;
+    font-size: var(--link_font);
+    font-weight: 600;
+    color: var(--link_color_white);
+    background-color: var(--s_color_lightBlue);
+    width: 13%;
+    border: none;
+    border-radius: 4px;
+}
+.delete_Button:hover{
+    color: var(--link_color_white);
+    background-color: red;
+}
+
+.card__end{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+    .buttonBlack{
+        width: 50%;
+        background-color: black;
+        border: none;
+        border-radius: 4px;
+        color: white;
+        padding: 10px;
+        border-radius: 5px;
+    }
+    .buttonBlue{
+        width: 50%;
+        background-color:var(--p_color_blue);
+        border: none;
+        border-radius: 4px;
+        color: white;
+        padding: 10px;
+    }
+

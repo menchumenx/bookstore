@@ -14,25 +14,12 @@ romper el diseño. -->
        
      <!-- FOR que recorre el array de libros para mostrarlos + + [[ngClass]=""] para cambair los botones -->
         <div *ngFor="let book of myBooks; let botonPar = even">
-            <!-- card -->
-            <div class="card" style="width: 18rem; max-height: 560px;">
-                <img src="{{book.photo}}" class="card-img-top" style="width: 100%; max-height: 350px;" alt="...">
-                
-                <div class="card-body">
-                    <div class="title_container;" style="height: 50px; ">
-                        <h5 class="card-title" style="color: #2170b0ea; ">{{book.title}}</h5>
-                    </div>
-                    <p class="card-text" style="text-align:right" >{{book.author}}</p>
-                    <p class="card-text"style="color: #acabab; text-align:right; color: #2170b0ea;" >{{book.price}} €</p>
-                    
-                    <div class=" card__end">
-                        <p class="card-text "style="color: #acabab;" >{{book.id_books | bookReference}}</p>
-                        <!-- cambiamos el boton de color segun la condicion de si es par usando el indice del ngFor
-                        Utilizamosl avriable declara den ngIF y las clases declardas en Css para hacer la condición -->
-                        <button class="buttonBlack" [ngClass]=" botonPar ? 'buttonBlack' : 'buttonBlue' " >Buy</button>           
-                    </div>
-                </div>
-            </div>
+            <!-- COMUNICACIÓN PADRE-HIJO -->
+            <!-- tenemos dos variables de comunicación Padre-Hijo, una para pasar la información de los libros
+            y la otra para el color del boton -->
+            <!-- COMUNICACIÓN HIJO-PADRE -->
+            <!-- (eventDeleteBook)="deleteBook($event), Con esto recibimos el evento creado desde el hijo que nos trae los datos que necesitamos -->
+            <app-card [bookPadre] = 'book' [botonPar]="botonPar" (eventDeleteBook)="deleteBook($event)"></app-card> 
         </div>
 
     </div>

@@ -12,35 +12,6 @@
     margin-bottom: 100px;
 }
 
-/* CARDS */
-
-    .text__color{
-        color: var(--s_color_lightBlue);
-        
-    }
-    .card__end{
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-    }
-        .buttonBlack{
-            width: 50%;
-            background-color: black;
-            border: none;
-            border-radius: 4px;
-            color: white;
-            padding: 10px;
-            border-radius: 5px;
-        }
-        .buttonBlue{
-            width: 50%;
-            background-color:var(--p_color_blue);
-            border: none;
-            border-radius: 4px;
-            color: white;
-            padding: 10px;
-        }
-
 /* FORMULARIO ----------------------------- */
 .formContainer{
     display: flex;

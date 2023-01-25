@@ -8,6 +8,7 @@ import { BooleanLiteral } from 'typescript';
   styleUrls: ['./books.component.css']
 })
 export class BooksComponent {
+
 book:string
 myBooks : Book[]
 
@@ -28,7 +29,9 @@ myBooks : Book[]
   }
 
 
-  // metodos
+  // metodos--------------
+
+  // Añadir libro
   public updateBook(newtitle:string,newType:string,newAuthor:string, newPrice:string, newPhoto:string, newid:string):any{
 
     let price = parseInt(newPrice)
@@ -37,10 +40,21 @@ myBooks : Book[]
     let newBook = new Book(newtitle,newType,newAuthor, price,newPhoto,idNum)
 
     console.log(newBook);
-    
-
     this.myBooks.push(newBook)
-   
   }
 
+// eliminar libro COMUNICACIÓN HIJO-PADRE
+public deleteBook(id_Book:number){
+  
+  console.log(id_Book);
+ 
+  // metodo filter para sobrrescribir el array de libros que se muestra. Recorremos el array y los elemntos del array(los libros), y le decimos que nos devuelva los libros que no coincidan con el id que le pasamos
+  this.myBooks = this.myBooks.filter(book => book.id_books != id_Book)
+  
+  console.log(this.myBooks);
+  
+  
 }
+
+}
+
