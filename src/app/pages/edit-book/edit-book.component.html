@@ -1,0 +1,52 @@
+
+<!-- 
+    ***********FORMULARIO**************
+ -->
+ <div class="main_Container">
+    <div class="form_container">
+        <div class="title_container">
+            <h2>Edita un Libro</h2>
+        </div>
+        <div class="form">
+            <form action="" class="formContainerData">
+                <!-- id_BOX -->
+                <div class="idData">
+                    <div class="inputId">
+                        <label for="">Id del Libro para editar</label>
+                        <input #id type="number" placeholder="Introduce el ID del libro" type="text">
+                    </div>
+                    <button type="button" (click)="getEditBook(id.value)" class="id_button">Buscar Libro</button>
+                </div>
+                <!-- DATA -->
+                <div class="data">
+                    <label for="">Titulo del Libro</label>
+                    <input #titulo [value]="editBook.title"  placeholder="Introduce el titulo del libro" type="text">
+                </div>
+                <div class="data">
+                    <label for="">Tipo</label>
+                    <input #tipo  [value]="editBook.type" placeholder="Introduce el tipo" type="text">
+                </div>
+                <div class="data">
+                    <label for="">Autor</label>
+                    <input #autor [value]="editBook.author"  placeholder="Introduce el Autor" type="text">
+                </div>
+                <div class="data">
+                    <label for="">Precio</label>
+                    <input #precio [value]="editBook.price"  placeholder="Introduce el precio de venta" type="number">
+                </div>
+        
+                <div class="data">
+                    <label for="">Portada</label>
+                    <input #foto [value]="editBook.photo" placeholder="Introduce una url para la portada" type="text">
+                </div>
+
+        
+            </form>
+        
+            <div class="endForm">
+                <button  type="button" (click)="edit_Book(titulo.value, tipo.value, autor.value, precio.value, foto.value, id.value)">Insertar Libro</button>
+            </div>
+    
+    </div>
+ </div>
+

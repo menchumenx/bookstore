@@ -1,13 +1,11 @@
 
-<!-- D3.3 Esta card debe estar en un contenedor que permita agregar tantas card como se necesite sin
-romper el diseño. -->
- <!-- D3.4 
-    • Añadir a la página libros un formulario con todos los campos necesarios para crear un libro.
-    • Implementar funcionalidad que cuando se inserten datos en el formulario y se llame al evento
-      click se agregue un nuevo libro al array libros del componente. -->
-
-
 <div class="container mt-5" >
+<!-- buscador -->
+<form action="" class="search_box">
+    <input #id type="text" placeholder="Introduce el ID de un Libro">
+    <button type="button" (click)="searchBooks(id.value)">Buscar</button>
+</form>
+
 <!-- inIf para mostrar solo si ahy libros-->
     <div *ngIf="myBooks.length !=0; else noBooks"  class="cards_container">
      <!-- usamos el indice del ngFOr con la propiedad even(par) para cambair el color de los botones pares-->
@@ -17,9 +15,10 @@ romper el diseño. -->
             <!-- COMUNICACIÓN PADRE-HIJO -->
             <!-- tenemos dos variables de comunicación Padre-Hijo, una para pasar la información de los libros
             y la otra para el color del boton -->
+            <app-card [bookPadre] = 'book' [botonPar]="botonPar" (eventDeleteBook)="deleteBook($event)"></app-card> 
             <!-- COMUNICACIÓN HIJO-PADRE -->
             <!-- (eventDeleteBook)="deleteBook($event), Con esto recibimos el evento creado desde el hijo que nos trae los datos que necesitamos -->
-            <app-card [bookPadre] = 'book' [botonPar]="botonPar" (eventDeleteBook)="deleteBook($event)"></app-card> 
+
         </div>
 
     </div>
@@ -30,41 +29,3 @@ romper el diseño. -->
 </div>
 
 
-<!-- 
-    ***********FORMULARIO**************
- -->
- <div class=" container mt-5 formContainer">
-    <div class="form">
-        <form action="" class="formContainerData">
-            <div class="data">
-                <label for="">Id del Libro</label>
-                <input #id type="number" placeholder="Introduce el ID del libro" type="text">
-            </div>
-            <div class="data">
-                <label for="">Titulo del Libro</label>
-                <input #titulo  placeholder="Introduce el titulo del libro" type="text">
-            </div>
-            <div class="data">
-                <label for="">Tipo</label>
-                <input #tipo   placeholder="Introduce el tipo" type="text">
-            </div>
-            <div class="data">
-                <label for="">Autor</label>
-                <input #autor   placeholder="Introduce el Autor" type="text">
-            </div>
-            <div class="data">
-                <label for="">Precio</label>
-                <input #precio   placeholder="Introduce el precio de venta" type="number">
-            </div>
-    
-            <div class="data">
-                <label for="">Portada</label>
-                <input #foto  placeholder="Introduce una url para la portada" type="text">
-            </div>
-    
-        </form>
-    
-        <div class="endForm">
-            <button  type="button" (click)="updateBook( titulo.value, tipo.value, autor.value, precio.value, foto.value, id.value)">Insertar Libro</button>
-        </div>
- </div>
