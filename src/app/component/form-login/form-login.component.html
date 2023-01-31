@@ -1,0 +1,43 @@
+
+<main class="container">
+    <!-- template driven -->
+    <form #userForm="ngForm" (ngSubmit)="onSubmit(userForm)" class="form">
+
+      
+            <img class="logo_login" src="../../../assets/logo_registro.png" alt="">
+            
+            <!-- form group EMAIL -->
+            <div class="form-group inputContainer">
+                <label>Email</label>
+                <input type="email" name="email" class="form-control" [(ngModel)]="vistaUser.email"
+                #emailId='ngModel'
+                [ngClass]="{ 'is-invalid': (emailId.dirty || emailId.touched) && emailId.invalid}" email required>
+            <!-- validaciones -->
+                <div *ngIf='(emailId.dirdy || emailId.touched) && emailId.invalid' class='invalid-feedback'>
+                    <p *ngIf="emailId.errors.required">Este campo es obligatorio. Debes introducir un email</p>
+                    <p *ngIf="emailId.errors.email">Email incorrecto</p>
+                </div>
+            </div>
+
+            <!-- form group CONRTASEÑA -->
+            <div class="inputContainer form-group">
+                <label>Contraseña</label>
+                <input type="password" name="password" class="form-control" [(ngModel)]="vistaUser.password" 
+                #passwordId="ngModel"
+                [ngClass]="{ 'validacion': (passwordId.dirty || passwordId.touched) && passwordId.invalid}"             
+                minlength="8" required>
+       
+                <div *ngIf='(passwordId.dirty || passwordId.touched) && passwordId.invalid' class='invalid-feedback'>
+                    <p *ngIf="passwordId.errors.required">Este campo es obligatorio./p>
+                    <p *ngIf="passwordId.errors.minlength">La contraseña debe tener mínimo 8 caracteres </p>
+                </div>
+            </div>
+            
+            <div class="form-group inputContainer">
+                <button  class="button btn-block" [disabled]="userForm.invalid">Iniciar Sesion</button>
+            </div>
+      
+      
+    </form>
+
+</main>

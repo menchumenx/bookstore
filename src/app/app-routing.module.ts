@@ -4,6 +4,7 @@ import { AddBookComponent } from './pages/add-book/add-book.component';
 import { BooksComponent } from './pages/books/books.component';
 import { EditBookComponent } from './pages/edit-book/edit-book.component';
 import { HomeComponent } from './pages/home/home.component';
+import { LoginComponent } from './pages/login/login.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { ResgisterComponent } from './pages/resgister/resgister.component';
 
@@ -13,7 +14,8 @@ const routes: Routes = [
   {path: 'perfil', component:ProfileComponent},
   {path:'libros', component:BooksComponent},
   {path:'addBook', component:AddBookComponent},
-  {path:'editBook', component:EditBookComponent}
+  {path:'editBook', component:EditBookComponent},
+  {path:'login', component:LoginComponent}
 
 ];
 

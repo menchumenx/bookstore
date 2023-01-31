@@ -10,24 +10,71 @@
         <div class="form_container">
             <div class="title_container">
                 <h2>BORCELLE</h2>
-                <h2>BOOKSTRORE</h2>
+                <h2>BOOKSTORE</h2>
             </div>
 
-            <div class="form">
-                <label for="">Nombre</label>
-                <input type="text" class="input" placeholder="Introduce tu nombre">
-            
-                <label for="">Apellido</label>
-                <input type="text" class="input"  placeholder="Introduce tu apellido">
-            
-                <label for="">Email</label>
-                <input type="text" class="input"  placeholder="Introduce tu email">
-            
-                <label for="">Contraseña</label>
-                <input type="text" class="input"  placeholder="Introduce tu contraseña">
+            <form class="form" #registroForm="ngForm" (ngSubmit)="register(registroForm)">
 
-                <button class="button">Enviar</button>
-            </div> 
+                <div class="form-group group_container">
+                    <label for="">Nombre</label>
+                    <input type="text" class=" form-control input" name='name' [(ngModel)]="registroUser.name"
+                    #nombreId='ngModel'
+                    [ngClass]="{ 'is-invalid': (nombreId.dirty || nombreId.touched) && nombreId.invalid}"  required
+                    placeholder="Introduce tu nombre">
+
+                    <!-- validaciones -->
+                    <div *ngIf='(nombreId.dirty || nombreId.touched) && nombreId.invalid' class='invalid-feedback'>
+                        <p *ngIf="nombreId.errors.required">Este campo es obligatorio. </p>
+                    </div>
+
+                </div>
+            
+                <div class="form-group group_container">
+                    <label for="">Apellido</label>
+                    <input type="text" class="input form-control" name="last_name" [(ngModel)]="registroUser.last_name"
+                    #surenameId='ngModel'
+                    [ngClass]="{ 'is-invalid': (surenameId.dirty || surenameId.touched) && surenameId.invalid}"  required
+                    placeholder="Introduce tu apellido">
+
+                    <!-- validaciones -->
+                    <div *ngIf='(surenameId.dirty || surenameId.touched) && surenameId.invalid' class='invalid-feedback'>
+                        <p *ngIf="surenameId.errors.required">Este campo es obligatorio. </p>
+                    </div>
+
+                </div>
+
+                <div class="form-group group_container">
+                    <label for="">Email</label>
+                    <input type="text" class="input form-control" name="email" [(ngModel)]="registroUser.email" 
+                    #emailId='ngModel'
+                    [ngClass]="{ 'is-invalid': (emailId.dirty || emailId.touched) && emailId.invalid}" email required
+                    placeholder="Introduce tu email">
+
+                    <!-- validaciones -->
+                    <div *ngIf='(emailId.dirdy || emailId.touched) && emailId.invalid' class='invalid-feedback'>
+                        <p *ngIf="emailId.errors.email">Email incorrecto</p>
+                        <p *ngIf="emailId.errors.required">Este campo es obligatorio.</p>
+                    </div>
+                </div>
+
+                <div class="form-group group_container">
+                    <label for="">Contraseña</label>
+                    <input type="text" class="input form-control" name="passwod" [(ngModel)]="registroUser.password"
+                    #passwordId='ngModel'
+                    [ngClass]="{ 'is-invalid': (passwordId.dirty || passwordId.touched) && passwordId.invalid}"  required
+                    placeholder="Introduce tu contraseña">
+
+                    <!-- validaciones -->
+                    <div *ngIf='(passwordId.dirty || passwordId.touched) && passwordId.invalid' class='invalid-feedback'>
+                        <p *ngIf="passwordId.errors.required">Este campo es obligatorio.</p>
+                    </div>
+                </div>
+
+                <div class="form-group ">
+                    <button  class="button btn-block" [disabled]="registroForm.invalid">Enviar</button>
+                </div>
+
+            </form> 
         </div>
         
     </div>

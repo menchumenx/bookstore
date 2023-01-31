@@ -21,6 +21,9 @@
     --p_color_blue: #162655;
     --s_color_lightBlue: #5678df;
 
+    --p_color_blue_disabled: #16265550;
+    
+
 /* para páginas sin scroll */
     --main_container: 84vh
 }
