@@ -13,6 +13,7 @@ export class EditBookComponent {
 
   constructor(public book_service :BooksService){
    
+    this.editBook = new Book ('','','',0,'')
   }
 
 // mostrar libro
