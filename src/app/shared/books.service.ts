@@ -69,7 +69,4 @@ deleteBook(idBook:number){
   }
 
 
-
-
-
 }

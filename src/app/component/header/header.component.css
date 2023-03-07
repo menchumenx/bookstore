@@ -20,9 +20,12 @@
 
         margin-left: 1%;
         height:100%;
+        width: 35%;
+      
     }
         .brand img{
-            width: 6.2%;
+            width: 9%;
+          
         }
         .brand_title{
             font-weight: 400;
@@ -36,7 +39,7 @@
         }
 
     .links_container{
-        width: 30%;
+        width: 60%;
         /* border: 2px solid red; */
 
        display: flex;

@@ -9,7 +9,7 @@ import { FormRegisterComponent } from './component/form-register/form-register.c
 import { ResgisterComponent } from './pages/resgister/resgister.component';
 import { HomeComponent } from './pages/home/home.component';
 import { ProfileComponent } from './pages/profile/profile.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BooksComponent } from './pages/books/books.component';
 import { BookReferencePipe } from './pipes/book-reference.pipe';
 import { CardComponent } from './component/card/card.component';
@@ -38,7 +38,8 @@ import { FormLoginComponent } from './component/form-login/form-login.component'
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
