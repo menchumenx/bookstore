@@ -27,46 +27,66 @@ export class BooksService {
 
    }
 
-  // METODOS 
+  // METODOS *************************
 
   // --> MOSTRAR TODOS LOS LIBROS
-getAll():Book[]{
-    return this.mybooks
-  }
+  getAll():Book[]{
+      return this.mybooks
+    }
 
   // --> MOSTRAR UN LIBRO : ID_BOOK
-getOne(idbook:number):Book{
-// cambiar .filter por un .find
-  let book:Book = this.mybooks.find(book => book.id_books == idbook)
-  return book
-}
+  getOne(idbook:number):Book{
+  
+    let book:Book = this.mybooks.find(book => book.id_books == idbook)
+
+    console.log(book);
+    
+    return book
+  }
 
   // --> AÑADIR UN LIBRO
-addBook(newBook:Book):void{
-    this.mybooks.push(newBook)  
-  }
+  addBook(newBook:Book):void{
+      this.mybooks.push(newBook)  
+    }
 
   // --> EDITAR UN LIBRO : ID_BOOK
-editBook(editBook:Book):any{
 
-  // buscamos el libro que queremos editar dentro de los libros de nuestra bbdd --> sustituimos los valores, por los recibidos anteriormente desde la vista.
-  let book:Book = this.mybooks.find(book => book.id_books == editBook.id_books)
- 
-    book.title = editBook.title;
-    book.type = editBook.type;
-    book.author = editBook.author;
-    book.price = editBook.price;
-    book.photo = editBook.photo
-    
-  }
+    editBook(editBook:Book):boolean{
+
+      let index =  this.mybooks.findIndex((book)=>book.id_books == editBook.id_books) ;
+      
+      this.mybooks.splice(index, 1, editBook);
+
+        return index != -1
+      }
+    // editBook(editBook:Book):any{
+
+  //   // buscamos el libro que queremos editar dentro de los libros de nuestra bbdd --> sustituimos los valores, por los recibidos anteriormente desde la vista.
+  //   let book:Book = this.mybooks.find(book => book.id_books == editBook.id_books)
+  
+  //     book.title = editBook.title;
+  //     book.type = editBook.type;
+  //     book.author = editBook.author;
+  //     book.price = editBook.price;
+  //     book.photo = editBook.photo
+      
+  //   }
 
 
   // --> ELIMINAR UN LIBRO : ID_BOOK
-deleteBook(idBook:number){
-    console.log(idBook);
-    // metodo filter para sobrrescribir el array de libros que se muestra. Recorremos el array y los elemntos del array(los libros), y le decimos que nos devuelva los libros que no coincidan con el id que le pasamos
-    this.mybooks = this.mybooks.filter(book => book.id_books != idBook)
+  deleteBook(idBook:number):boolean{
+    let index =  this.mybooks.findIndex((book)=>book.id_books == idBook) ;
+
+   this.mybooks.splice(index, 1);
+
+    return index != -1
+
   }
+  // deleteBook(idBook:number){
+  //     console.log(idBook);
+  //     // metodo filter para sobrrescribir el array de libros que se muestra. Recorremos el array y los elemntos del array(los libros), y le decimos que nos devuelva los libros que no coincidan con el id que le pasamos
+  //     this.mybooks = this.mybooks.filter(book => book.id_books != idBook)
+  //   }
 
 
 }
