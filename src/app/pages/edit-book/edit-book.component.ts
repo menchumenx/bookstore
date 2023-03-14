@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { find } from 'rxjs';
 import { Book } from 'src/app/models/book';
+import { Respuesta } from 'src/app/models/respuesta';
 import { BooksService } from 'src/app/shared/books.service';
 
 @Component({
@@ -11,10 +12,12 @@ import { BooksService } from 'src/app/shared/books.service';
 export class EditBookComponent {
 
   editBook:Book
+ 
 
   constructor(public book_service :BooksService){
    
     this.editBook = new Book ('','','',0,'')
+    
   }
 
 // mostrar libro
@@ -22,9 +25,16 @@ public getEditBook(idBook:string){
   let idB = parseInt(idBook)
   console.log(idB);
   
-  // comprobamos que el valos que recibimos del sertvicio no es undefined
-  let findBook = this.book_service.getOne(idB) != undefined ?  this.editBook = this.book_service.getOne(idB) : console.log('no existe un libro con ese id');
-  
+  this.book_service.getOne(idB).subscribe((data:Respuesta) => {
+    console.log(data.data);
+    // comprobamos que el valos que recibimos del sertvicio no es undefined
+    if(data.data != undefined)
+    {
+      this.editBook = data.data[0]
+
+    } else {console.log(`No se ha encontrado libro con ID: ${idB}`);}
+    
+  })
   
 }
 
@@ -43,8 +53,10 @@ public edit_Book(editTitle:string, editType:string, editauthor:string, editprice
   console.log('libro en vista *************');
   console.log(newEditBook);
 
-  // enviamos el libro al servicio
-  this.book_service.editBook(newEditBook)
+  // enviamos el libro al servicio y recogemos la info que nos devuelve
+  this.book_service.editBook(newEditBook).subscribe((data:Respuesta) => {
+    console.log(data);
+  })
 
   }
 }

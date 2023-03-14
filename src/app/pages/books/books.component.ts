@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Book } from 'src/app/models/book';
+import { Respuesta } from 'src/app/models/respuesta';
 import { BooksService } from 'src/app/shared/books.service';
 import { BooleanLiteral } from 'typescript';
 
@@ -15,7 +16,12 @@ public myBooks : Book[]
 // creamos un atb con un objeto BooksService
   constructor(public book_Service: BooksService){
 
-   this.myBooks = book_Service.getAll()
+    this.myBooks = [];
+
+    this.book_Service.getAll().subscribe((data:Respuesta) => {
+        console.log(data.data);
+        this.myBooks = data.data;
+    })
    
   }
 
@@ -31,14 +37,18 @@ public searchBooks(id_book:string){
     console.log(id_book);
     let id = parseInt(id_book)
 
-    this.myBooks = [this.book_Service.getOne(id)]
-    console.log(this.book_Service.getOne(id));
-    console.log(this.myBooks);
+    this.book_Service.getOne(id).subscribe((data:Respuesta) => {
+      console.log(data.data)
+      this.myBooks = data.data
+      
+    })
     
   } else {
-    console.log(this.book_Service.getAll());
-    this.myBooks = this.book_Service.getAll()
-    }
+      this.book_Service.getAll().subscribe((data:Respuesta) => {
+        console.log(data.data);
+        this.myBooks = data.data;
+    })
+  }
 
 }
 
@@ -46,11 +56,13 @@ public searchBooks(id_book:string){
 public deleteBook(id_Book:number){
   
   console.log(id_Book);
-  this.book_Service.deleteBook(id_Book);
-
-  this.myBooks = this.book_Service.getAll()
-  console.log(this.myBooks);
   
+  this.book_Service.deleteBook(id_Book).subscribe((data:Respuesta)  => {
+    console.log(data.data);
+    this.myBooks = data.data
+    
+  })
+
 }
 
 }

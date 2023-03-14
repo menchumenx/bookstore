@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Book } from 'src/app/models/book';
+import { Respuesta } from 'src/app/models/respuesta';
 import { BooksService } from 'src/app/shared/books.service';
 import { BooksComponent } from '../books/books.component';
 
@@ -24,12 +25,13 @@ export class AddBookComponent {
       let idB = Math.floor(Math.random()*(200 - 1 + 1) + 1)
       console.log(idB);
       
-     
       let newBook = new Book(newtitle,newType,newAuthor, price,newPhoto,idB)
-  
       console.log(newBook);
-      this.book_Service.mybooks.push(newBook)
-      console.log(this.book_Service.mybooks);
+
+      this.book_Service.addBook(newBook).subscribe((data:Respuesta) => {
+        console.log(data);
+        
+      })
       
     }
   
