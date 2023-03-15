@@ -3,6 +3,7 @@ import { find } from 'rxjs';
 import { Book } from 'src/app/models/book';
 import { Respuesta } from 'src/app/models/respuesta';
 import { BooksService } from 'src/app/shared/books.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-edit-book',
@@ -14,7 +15,7 @@ export class EditBookComponent {
   editBook:Book
  
 
-  constructor(public book_service :BooksService){
+  constructor(public book_service :BooksService, private toastr: ToastrService){
    
     this.editBook = new Book ('','','',0,'')
     
@@ -30,9 +31,14 @@ public getEditBook(idBook:string){
     // comprobamos que el valos que recibimos del sertvicio no es undefined
     if(data.data != undefined)
     {
-      this.editBook = data.data[0]
+      this.editBook = data.data[0];
+          
 
-    } else {console.log(`No se ha encontrado libro con ID: ${idB}`);}
+    } else {
+      console.log(`No se ha encontrado libro con ID: ${idB}`);
+      this.toastr.error(`No se ha encontrado libro con ID: ${idB}`);
+
+    }
     
   })
   
@@ -56,6 +62,8 @@ public edit_Book(editTitle:string, editType:string, editauthor:string, editprice
   // enviamos el libro al servicio y recogemos la info que nos devuelve
   this.book_service.editBook(newEditBook).subscribe((data:Respuesta) => {
     console.log(data);
+    this.toastr.success(`El libro se ha EDITADO CORRECTAMENTE`);
+
   })
 
   }

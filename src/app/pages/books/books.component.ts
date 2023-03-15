@@ -3,6 +3,7 @@ import { Book } from 'src/app/models/book';
 import { Respuesta } from 'src/app/models/respuesta';
 import { BooksService } from 'src/app/shared/books.service';
 import { BooleanLiteral } from 'typescript';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-books',
@@ -14,7 +15,7 @@ export class BooksComponent {
 public myBooks : Book[]
 
 // creamos un atb con un objeto BooksService
-  constructor(public book_Service: BooksService){
+  constructor(public book_Service: BooksService, private toastr: ToastrService){
 
     this.myBooks = [];
 
@@ -38,8 +39,14 @@ public searchBooks(id_book:string){
     let id = parseInt(id_book)
 
     this.book_Service.getOne(id).subscribe((data:Respuesta) => {
-      console.log(data.data)
-      this.myBooks = data.data
+      if(data != undefined){
+
+        console.log(data.data)
+        this.myBooks = data.data
+
+      } else {
+        this.toastr.error(`El ID: ${id} no se encuentra`);
+      }
       
     })
     
