@@ -5,15 +5,24 @@
         <h2 class="brand_title">BORCELLE<span class="brand_span">BOOKSTORE</span></h2>
     </div>
 
-    <div class="links_container">
-        <a routerLink="/" class="links">HOME</a>
-        <a routerLink="/registro" class="links">REGISTRO</a>
-        <a routerLink="/login" class="links">LOGIN</a>
-        <a routerLink="/perfil" class="links">PERFIL</a>
-
-        <a routerLink="/libros" class="links">LIBROS</a>
-        <a routerLink="/addBook" class="links">AÑADIR LIBRO</a>
-        <a routerLink="/editBook" class="links">EDITAR LIBRO</a>
-
+    <div *ngIf="user_service.logged == false; else logged" class="ngIF_container">
+        <div class="links_container">
+            <a routerLink="/" class="links">HOME</a>
+            <a routerLink="/registro" class="links">REGISTRO</a>
+            <a routerLink="/login" class="links">LOGIN</a>
+        </div>
+    
     </div>
+    <!-- contenedor HEADER LOGGED -->
+    <ng-template #logged > 
+        <div class="links_container--logged">
+            <a routerLink="/" class="links">HOME</a>
+            <a routerLink="/perfil" class="links">PERFIL</a>
+            <a routerLink="/libros" class="links">LIBROS</a>
+            <a routerLink="/addBook" class="links">AÑADIR LIBRO</a>
+            <a routerLink="/editBook" class="links">EDITAR LIBRO</a>
+        </div>
+    </ng-template>
+
+
 </nav>

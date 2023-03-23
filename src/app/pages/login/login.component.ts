@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
+import { ToastrService } from 'ngx-toastr'; // para toast
 import { User } from 'src/app/models/user';
 import { UserService } from 'src/app/shared/user.service';
+import { Respuesta } from '../../models/respuesta';
+import { Router } from '@angular/router'; // para navigate
 
 @Component({
   selector: 'app-login',
@@ -10,7 +13,7 @@ import { UserService } from 'src/app/shared/user.service';
 export class LoginComponent {
 
   public userHijo:User;
-  constructor(public user_service:UserService){
+  constructor(public user_service:UserService, private toastr: ToastrService, private router:Router){
 
   }
 
@@ -18,13 +21,23 @@ export class LoginComponent {
 
 // COMUNICACION hijo-padre
 public login(usuarioHijo:User){
-  console.log('componente PADRE***********');
-  console.log(usuarioHijo);
 
   this.userHijo = usuarioHijo;
-  
   // nos conectamos al servicio
-  this.user_service.login(this.userHijo);
+  this.user_service.login(this.userHijo).subscribe((data:Respuesta)=>{
+    
+    if(data.message == 'sin coincidencia'){
+      this.toastr.error(`Usuario no encontrado`);
+    } else {
+      console.log(data);
+      // redireccionamos a books
+      this.router.navigate(['libros'])
+    
+      // cambiamos el valor de loged a true en el servicio para que se cambie el header
+      this.user_service.logged = true;
+    }
+    
+  });
 
   
   

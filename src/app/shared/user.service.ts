@@ -9,10 +9,12 @@ export class UserService {
   
   
   private url = 'http://localhost:3000/';
-  public loged : boolean;
+  public logged : boolean;
   public user : User;
 
-  constructor( private http: HttpClient) { }
+  constructor( private http: HttpClient) {
+    this.logged = false;
+   }
 
 
 // METHOS ***************************
