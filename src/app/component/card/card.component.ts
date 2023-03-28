@@ -18,7 +18,7 @@ export class CardComponent {
 
 
   constructor(){
-
+    
   }
 
   // HIJO-PADRE --> elimina el libro con una x en la card

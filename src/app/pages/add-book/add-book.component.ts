@@ -4,6 +4,7 @@ import { Respuesta } from 'src/app/models/respuesta';
 import { BooksService } from 'src/app/shared/books.service';
 import { BooksComponent } from '../books/books.component';
 import { ToastrService } from 'ngx-toastr';
+import { UserService } from 'src/app/shared/user.service';
 
 @Component({
   selector: 'app-add-book',
@@ -14,7 +15,7 @@ export class AddBookComponent {
 
  public book:string
 
-  constructor(public book_Service:BooksService, private toastr: ToastrService){
+  constructor(public book_Service:BooksService, private toastr: ToastrService, public user_service:UserService){
 
   }
 
@@ -22,16 +23,20 @@ export class AddBookComponent {
     public addBook(newtitle:string,newType:string,newAuthor:string, newPrice:string, newPhoto:string):any{
 
       let price = parseInt(newPrice)
-      // Obtenemos un numero aleatorio que incluya los doa valores de mínimo y máximo para asignar a id_book
-      let idB = Math.floor(Math.random()*(200 - 1 + 1) + 1)
-      console.log(idB);
       
-      let newBook = new Book(newtitle,newType,newAuthor, price,newPhoto,idB)
+      let newBook = new Book(newtitle,newType,newAuthor, price,newPhoto, this.user_service.user.id_user )
       console.log(newBook);
 
       this.book_Service.addBook(newBook).subscribe((data:Respuesta) => {
-        console.log(data);
-        this.toastr.success(`El Libro ${newBook.title} se ha AÑADIDO`);
+        
+        if(data.error){
+          this.toastr.error(`ERROR: Libro no añadido`);
+          console.log(data.message);
+          
+        } else{
+          this.toastr.success(`El Libro ${newBook.title} se ha AÑADIDO`);
+          console.log(data);
+        }
 
       })
       

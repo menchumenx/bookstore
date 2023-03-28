@@ -1,4 +1,5 @@
 import { Book } from "./book";
+import { User } from "./user";
 
 
 
@@ -9,6 +10,7 @@ export class Respuesta {
         public code: number,
         public message : string,
         public data : Book[],
-        public result: []
+        public result: User[],
+        public info?:any
     ){}
 }

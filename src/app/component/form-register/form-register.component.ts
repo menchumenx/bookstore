@@ -51,6 +51,7 @@ export class FormRegisterComponent {
     this.registerForm = this.formBuilder.group({
       // el primer csampo es el valor que queramos que tenga por defecto, si no queremos que tenga se deja vacío. El sigiente campo son los validadores. En el caso que sea mas de uno iran contenidos en un array
       name: [,[ Validators.required]],
+      last_name : [,[ Validators.required]],
       email: [, [Validators.required, Validators.email]],
       password: [, [Validators.required, Validators.minLength(passLenght)]],
       confirmPassword: [, [Validators.required, this.checkPassword]]

@@ -23,6 +23,15 @@
                         <div *ngIf="!registerForm.get('name').valid" class="invalid-feedback"> Este campo es Obligatorio </div>
                     </div>
 
+
+                    <div class="form-group group_container">
+                        <label for="">Apellido</label>
+                        <input type="text" class=" form-control input" formControlName="last_name"
+                        [ngClass]="{'is-invalid' : (registerForm.get('last_name').dirty || registerForm.get('last_name').touched) && !registerForm.get('last_name').valid }">
+
+                        <div *ngIf="!registerForm.get('last_name').valid" class="invalid-feedback"> Este campo es Obligatorio </div>
+                    </div>
+
                     <div class="form-group group_container">
                         <label for="">Email</label>
                         <input type="text" class=" form-control input" formControlName="email"

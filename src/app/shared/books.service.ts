@@ -10,6 +10,7 @@ export class BooksService {
 
   public mybooks: Book[]
   public book: Book
+  public id_user: number
 
   private url = 'http://localhost:3000/books'
 
@@ -22,13 +23,13 @@ export class BooksService {
   // METODOS *************************
 
   // --> MOSTRAR TODOS LOS LIBROS
-  getAll(){ // no hay que indicar lo que revuelve ¿?
-      return this.http.get(this.url)
+  getAll(id_user:number){ 
+      return this.http.get(`${this.url}?id_user=${id_user}`)
     }
 
   // --> MOSTRAR UN LIBRO : ID_BOOK
-  getOne(idbook:number){
-    return  this.http.get(`${this.url}?idBook=${idbook}`)
+  getOne(book:Book){
+    return  this.http.get(`${this.url}?id_user=${book.id_user}&id_book=${book.id_book}`)
   }
 
   // --> AÑADIR UN LIBRO
@@ -42,9 +43,9 @@ export class BooksService {
   }
    
   // --> ELIMINAR UN LIBRO : ID_BOOK
-  deleteBook(idBook:number){
+  deleteBook(idBook:number, id_user:number){
   
-    const httpOptions = {headers: null, body:{id_books: idBook}};
+    const httpOptions = {headers: null, body:{id_user: id_user, id_book: idBook}};
     return this.http.delete(this.url, httpOptions)
 
   }

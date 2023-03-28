@@ -6,7 +6,7 @@
    
     <img src="{{bookPadre.photo}}" class="card-img-top" style="width: 100%; max-height: 350px;" alt="...">
     
-    <button type="button" (click)="deleteBook(bookPadre.id_books)" class="delete_Button">X</button>
+    <button type="button" (click)="deleteBook(bookPadre.id_book)" class="delete_Button">X</button>
 
     <div class="card-body">
         
@@ -17,7 +17,7 @@
         <p class="card-text"style="color: #acabab; text-align:right; color: #2170b0ea;" >{{bookPadre.price}} €</p>
         
         <div class=" card__end">
-            <p class="card-text "style="color: #acabab;" >{{bookPadre.id_books | bookReference}}</p>
+            <p class="card-text "style="color: #acabab;" >{{bookPadre.id_book | bookReference}}</p>
             <!-- cambiamos el boton de color segun la condicion de si es par usando el indice del ngFor
             Utilizamosl avriable declara den ngIF y las clases declardas en Css para hacer la condición -->
             <!-- Al depender del padre, debemos hacer la comunicación padre Hijo para pasarle el valor desde

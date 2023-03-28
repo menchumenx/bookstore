@@ -26,7 +26,17 @@ public login(loginUser:User){
 
 // REGISTRO
 public register(newUser: User){
+  console.log(newUser);
+  
   return this.http.post(`${this.url}register`, newUser)
 }
+
+// EDIT USER
+public editUser(editUser: User){
+  console.log(editUser);
+  return this.http.put(`${this.url}user`, editUser)
+  
+}
+
 
 }

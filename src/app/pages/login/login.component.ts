@@ -26,15 +26,19 @@ public login(usuarioHijo:User){
   // nos conectamos al servicio
   this.user_service.login(this.userHijo).subscribe((data:Respuesta)=>{
     
-    if(data.message == 'sin coincidencia'){
+    if(data.error){
       this.toastr.error(`Usuario no encontrado`);
     } else {
       console.log(data);
-      // redireccionamos a books
-      this.router.navigate(['libros'])
     
       // cambiamos el valor de loged a true en el servicio para que se cambie el header
       this.user_service.logged = true;
+      this.user_service.user = data.result[0]
+      console.log(this.user_service.user);
+      
+      // redireccionamos a books
+      this.router.navigate(['libros'])
+
     }
     
   });
